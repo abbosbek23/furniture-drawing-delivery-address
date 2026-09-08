@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_production_information" model="ir.ui.view">
+        <field name="name">sale.order.form.production.information</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/notebook" position="before">
+                <group name="production_information" string="Production Information"
+                       groups="base.group_user">
+                    <field name="production_address" readonly="locked or state == 'cancel'"/>
+                    <field name="attachment_name" invisible="1"/>
+                    <field name="order_attachment" widget="binary" filename="attachment_name"
+                           readonly="locked or state == 'cancel'"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

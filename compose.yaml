@@ -1,0 +1,41 @@
+name: furniture-attachment-demo
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: furniture-local-demo
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo -d postgres"]
+      interval: 2s
+      timeout: 5s
+      retries: 20
+
+  odoo:
+    image: odoo:19
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: furniture-local-demo
+    ports:
+      - "127.0.0.1:8079:8069"
+    volumes:
+      - ./sale_mrp_attachment_address:/mnt/extra-addons/sale_mrp_attachment_address:ro
+      - ./scripts:/mnt/demo-scripts:ro
+      - ./output/pdf:/mnt/demo-files:ro
+      - ./config/odoo.conf:/etc/odoo/odoo.conf:ro
+      - odoo-data:/var/lib/odoo
+    # Database filter, master password, and the websocket time limit live in
+    # config/odoo.conf.
+    command: ["odoo"]
+
+volumes:
+  db-data:
+  odoo-data:

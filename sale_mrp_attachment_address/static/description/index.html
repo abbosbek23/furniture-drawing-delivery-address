@@ -1,0 +1,50 @@
+<section style="padding:32px 0;font-family:Roboto,Arial,sans-serif;color:#3a2e26;">
+  <div style="text-align:center;max-width:820px;margin:0 auto;">
+    <h2 style="font-size:34px;margin:0 0 12px;">Sales / Manufacturing Address and Drawing</h2>
+    <p style="font-size:18px;line-height:1.6;color:#6b5b4d;margin:0;">
+      Share a furniture installation address and its drawing from the Sales Order
+      to the linked Manufacturing Order — no more separate Excel handoff between
+      the sales desk and the workshop.
+    </p>
+  </div>
+</section>
+
+<section style="padding:8px 0 32px;font-family:Roboto,Arial,sans-serif;color:#3a2e26;">
+  <div style="max-width:820px;margin:0 auto;">
+    <h3 style="font-size:24px;border-bottom:2px solid #d68a3a;padding-bottom:8px;">What it adds</h3>
+    <ul style="font-size:16px;line-height:1.8;color:#4a3d33;">
+      <li><b>Production Information</b> group on the Sales Order: installation address plus one uploaded drawing, PDF, or technical file.</li>
+      <li><b>Sales Information</b> group on the Manufacturing Order: the originating order, its address, and the same file to download.</li>
+      <li>Values are read live through Odoo's native <code>sale_mrp</code> sales-line link, so an edited order updates the workshop's view.</li>
+      <li>The workshop role downloads the drawing without needing any Sales role.</li>
+      <li>A Sales Order Line selector for manually created draft Manufacturing Orders.</li>
+      <li>The file is stored once, on the Sales Order — never duplicated onto the MO.</li>
+    </ul>
+  </div>
+</section>
+
+<section style="padding:8px 0 32px;font-family:Roboto,Arial,sans-serif;color:#3a2e26;">
+  <div style="max-width:820px;margin:0 auto;">
+    <h3 style="font-size:24px;border-bottom:2px solid #d68a3a;padding-bottom:8px;">How it works</h3>
+    <p style="font-size:16px;line-height:1.7;color:#4a3d33;">
+      Sales fills in the address and uploads the drawing on the quotation. When the
+      order is confirmed, standard MTO procurement creates the Manufacturing Order and
+      <code>sale_mrp</code> records the sales line on it. The MO then reads the address,
+      the filename, and the file itself through that line — read-only, and always current.
+    </p>
+    <p style="font-size:16px;line-height:1.7;color:#4a3d33;">
+      Installing this app also brings in Sales and Manufacturing through its
+      <code>sale_management</code> and <code>sale_mrp</code> dependencies. It creates no new
+      models and adds no new access rules; your existing Sales and Manufacturing
+      permissions stay in force.
+    </p>
+  </div>
+</section>
+
+<section style="padding:8px 0 32px;font-family:Roboto,Arial,sans-serif;color:#3a2e26;">
+  <div style="max-width:820px;margin:0 auto;text-align:center;">
+    <p style="font-size:14px;color:#8a7a6c;margin:0;">
+      Odoo 19 Community &nbsp;·&nbsp; version 19.0.1.0.0 &nbsp;·&nbsp; LGPL-3
+    </p>
+  </div>
+</section>
